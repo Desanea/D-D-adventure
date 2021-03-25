@@ -1,0 +1,44 @@
+import random
+
+
+class Location:
+    def __init__(self, name, gold):
+        self.name = name
+        self.gold = gold
+
+    def __str__(self):
+        return 'This location is called {}, there ' \
+               'is {} gold pieces here!'.format(self.name, self.gold)
+
+    def loot(self, amount_of_gold=10):
+        self.gold = self.gold - amount_of_gold
+        print('You have looted {} gold from {}!'.format(amount_of_gold, self.name))
+
+
+if __name__ == '__main__':
+    castle = Location('Castle Ravenloft', 50)
+    print(castle)
+
+    # loot specific amount of gold from the castle
+    castle.loot(amount_of_gold=25)
+    print(castle)
+
+    # loot the default amount
+    castle.loot()
+    print(castle)
+
+    # loot a random amunt of gold from the castle
+    random_amount = random.randint(0, 5)
+    print('Picked randomly this amount of gold: ', random_amount)
+    castle.loot(amount_of_gold=random_amount)
+    print(castle)
+
+
+# main game loop:
+# game_ongoing = True
+# while game_ongoing:
+#     answer = input('Want to continue playing?\n')
+#     print('You said: {}, when asked if you want to play.')
+#     if answer == 'no':
+#         game_ongoing = False
+#     pass
